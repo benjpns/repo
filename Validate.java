@@ -28,8 +28,15 @@ public class Validate {
                     return a == pointAB[3];
                 }
             } else if (positionV(pointAB)) { // vertical check
-                for (int i = 0; i < ship; i++) {a =  ab[0]++;}
-                return a == pointAB[2];
+                if (pointAB[0] < pointAB[2]){
+                    for (int i = 0; i < ship; i++) {a =  ab[0]++;}
+                    return a == pointAB[2];
+                }
+                if (pointAB[0] > pointAB[2]){
+                    for (int i = 0; i < ship; i++) {a =  ab[0]--;}
+                    return a == pointAB[2];
+                }
+
             }
             return true;
     }
