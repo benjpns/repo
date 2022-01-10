@@ -31,6 +31,9 @@ public class tenXfield {
             String message = String.format("Error! Wrong length of the %s! Try again: ", Inputs.shipNames[sizeName]);
             Inputs.function(ship, message);
         }
+        if (!validate.positionH(pointAB(array)) && !validate.positionV(pointAB(array))){
+            Inputs.function(ship,"Error! Wrong location! Try again: ");
+        }
     }
 
     public int[] pointAB(String[] userInput){
