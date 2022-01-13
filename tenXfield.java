@@ -29,7 +29,6 @@ public class tenXfield {
         Ship ships = new Ship();
         ships.coordinatesOfShips(validate.tempSize, pointAB(array));
         Print print = new Print();
-
         print.firstPrint(Ship.aircraft);
     }
 

@@ -3,7 +3,6 @@ public class Print extends tenXfield {
     public Print() {
 
     }
-
     public void firstPrint(){
         for (int i = 0; i < fieldRow; i++){
             System.out.print("\n");
@@ -26,4 +25,6 @@ public class Print extends tenXfield {
             }
         }
     }
+
+
 }

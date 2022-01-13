@@ -24,6 +24,7 @@ public class Ship {
                             aircraft[i][k + 1] = temp[count++];
                         }
                     }
+
                 } else { // positionV
                     for (int i = 0; i < temp.length; i++) {
                         for (int k = 0; k < 1; k++) {
