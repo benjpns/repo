@@ -29,11 +29,6 @@ public class tenXfield {
         Ship ships = new Ship();
         ships.coordinatesOfShips(validate.tempSize, pointAB(array));
         Print print = new Print();
-        for (int i = 0; i < Ship.aircraft.length; i++){
-            for (int j = 0; j < 1; j++){
-                field[Ship.aircraft[i][j]][Ship.aircraft[i][j+1]] = "O";
-            }
-        }
 
         print.firstPrint(Ship.aircraft);
     }
