@@ -7,18 +7,8 @@ public class tenXfield {
     public static final String[][] field = new String[fieldColumn][fieldRow];
 
     public tenXfield() {
-        for (int i = 0; i < fieldRow; i++) {
-            for (int k = 0; k < fieldColumn; k++) {
-                if (i == 0 && k == 0) field[i][k] = " ";
-                if (i == 0 && k > 0) {
-                    field[i][k] = k+"";
-                }
-                if (i > 0) field[i][k] = "~";
-                if (i > 0 && k == 0) {
-                    field[i][k] = String.valueOf(rowField++);
-                }
-            }
-        }
+        assignShip();
+
     }
     public tenXfield(String coordinates, int ship) {
         String[] array = coordinates.toUpperCase().replaceAll("10", "x").replaceAll(" ", "").split("");
@@ -38,7 +28,30 @@ public class tenXfield {
         //add first ship
         Ship ships = new Ship();
         ships.coordinatesOfShips(validate.tempSize, pointAB(array));
+        Print print = new Print();
+        for (int i = 0; i < Ship.aircraft.length; i++){
+            for (int j = 0; j < 1; j++){
+                field[Ship.aircraft[i][j]][Ship.aircraft[i][j+1]] = "O";
+            }
+        }
 
+        print.firstPrint(Ship.aircraft);
+    }
+
+
+    public void assignShip(){
+        for (int i = 0; i < fieldRow; i++) {
+            for (int k = 0; k < fieldColumn; k++) {
+                if (i == 0 && k == 0) field[i][k] = " ";
+                if (i == 0 && k > 0) {
+                    field[i][k] = k+"";
+                }
+                if (i > 0) field[i][k] = "~";
+                if (i > 0 && k == 0) {
+                    field[i][k] = String.valueOf(rowField++);
+                }
+            }
+        }
     }
 
     public int[] pointAB(String[] userInput){

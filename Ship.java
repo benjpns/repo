@@ -24,15 +24,13 @@ public class Ship {
                             aircraft[i][k + 1] = temp[count++];
                         }
                     }
-                    //System.out.println(Arrays.deepToString(aircraft));
-                } else {
+                } else { // positionV
                     for (int i = 0; i < temp.length; i++) {
                         for (int k = 0; k < 1; k++) {
                             aircraft[i][k + 1] = temp[count++];
                             aircraft[i][k] = array[1];
                         }
                     }
-                    System.out.println(Arrays.deepToString(aircraft));
                 }
                 break;
             case 4:
