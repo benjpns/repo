@@ -1,4 +1,6 @@
 public class Validate {
+    int[] tempSize;
+
     public Validate(){
 
     }
@@ -11,6 +13,7 @@ public class Validate {
     }
 
     public boolean size(int[] pointAB, int ship) {
+        tempSize = new int[ship];
         int[] ab = new int[4];
         System.arraycopy(pointAB, 0, ab, 0, pointAB.length);
         int a = pointAB[1];
@@ -18,26 +21,41 @@ public class Validate {
                 if(pointAB[1] < pointAB[3]) {
                     for (int i = 0; i < ship; i++) {
                         a = ab[1]++;
+                        tempSize[i] = a;
                     }
                     return a == pointAB[3];
                 }
                 if(pointAB[1] > pointAB[3]) {
                     for (int i = 0; i < ship; i++) {
                         a = ab[1]--;
+                        tempSize[i] = a;
                     }
                     return a == pointAB[3];
                 }
             } else if (positionV(pointAB)) { // vertical check
                 if (pointAB[0] < pointAB[2]){
-                    for (int i = 0; i < ship; i++) {a =  ab[0]++;}
+                    for (int i = 0; i < ship; i++) {
+                        a =  ab[0]++;
+                        tempSize[i] = a;
+                    }
                     return a == pointAB[2];
                 }
                 if (pointAB[0] > pointAB[2]){
-                    for (int i = 0; i < ship; i++) {a =  ab[0]--;}
+                    for (int i = 0; i < ship; i++) {
+                        a =  ab[0]--;
+                        tempSize[i] = a;
+                    }
                     return a == pointAB[2];
                 }
 
             }
             return true;
+    }
+
+
+    public boolean tooClose(){
+
+
+        return true;
     }
 }

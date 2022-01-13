@@ -26,6 +26,6 @@ public class Inputs {
         shipNames = new String[]{"Aircraft carrier", "Battleship", "Submarine", "Cruiser", "Destroyer"};
         cells = java.lang.String.valueOf(shipNum);
         System.out.printf("%n%s", message);
-        new tenXfield(input.nextLine(), Integer.parseInt(cells));
+        input.nextLine();
     }
 }

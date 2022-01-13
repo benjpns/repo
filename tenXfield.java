@@ -34,6 +34,11 @@ public class tenXfield {
         if (!validate.positionH(pointAB(array)) && !validate.positionV(pointAB(array))){
             Inputs.function(ship,"Error! Wrong location! Try again: ");
         }
+
+        //add first ship
+        Ship ships = new Ship();
+        ships.coordinatesOfShips(validate.tempSize, pointAB(array));
+
     }
 
     public int[] pointAB(String[] userInput){
