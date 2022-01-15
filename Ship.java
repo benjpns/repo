@@ -13,25 +13,22 @@ public class Ship {
 
     public void coordinatesOfShips(int[] temp, int[] array) {
         Validate validates = new Validate();
-        int count;
         switch (temp.length) {
             case 5:
-                count = 0;
+                int count = 0;
                 if (validates.positionH(array)) {
                     for (int i = 0; i < temp.length; i++) {
                         for (int k = 0; k < 1; k++) {
-                            aircraft[i][k] = array[0];
-                            aircraft[i][k + 1] = temp[count++];
+                            aircraft[i][k] = array[0];aircraft[i][k + 1] = temp[count++];
                         }
                     }
-
                 } else { // positionV
                     for (int i = 0; i < temp.length; i++) {
                         for (int k = 0; k < 1; k++) {
-                            aircraft[i][k + 1] = temp[count++];
-                            aircraft[i][k] = array[1];
+                            aircraft[i][k + 1] = array[1];aircraft[i][k] = temp[count++];
                         }
                     }
+                    System.out.println(Arrays.deepToString(aircraft));
                 }
                 break;
             case 4:

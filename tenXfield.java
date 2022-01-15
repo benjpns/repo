@@ -1,15 +1,16 @@
 import java.util.Arrays;
 
 public class tenXfield {
+
     public static final int fieldColumn = 11;
     public static final int fieldRow = 11;
-    char rowField = 65;
+    static char rowField = 65;
     public static final String[][] field = new String[fieldColumn][fieldRow];
 
-    public tenXfield() {
-        assignShip();
+    public  tenXfield() {
 
     }
+
     public tenXfield(String coordinates, int ship) {
         String[] array = coordinates.toUpperCase().replaceAll("10", "x").replaceAll(" ", "").split("");
         if (array[1].equals("x")){array[1] = "10";}
@@ -24,16 +25,15 @@ public class tenXfield {
         if (!validate.positionH(pointAB(array)) && !validate.positionV(pointAB(array))){
             Inputs.function(ship,"Error! Wrong location! Try again: ");
         }
-
         //add first ship
         Ship ships = new Ship();
         ships.coordinatesOfShips(validate.tempSize, pointAB(array));
         Print print = new Print();
-        print.firstPrint(Ship.aircraft);
+        print.fPrint(ship);
     }
 
 
-    public void assignShip(){
+    public static void assignShip(){
         for (int i = 0; i < fieldRow; i++) {
             for (int k = 0; k < fieldColumn; k++) {
                 if (i == 0 && k == 0) field[i][k] = " ";
@@ -48,7 +48,7 @@ public class tenXfield {
         }
     }
 
-    public int[] pointAB(String[] userInput){
+    public static int[] pointAB(String[] userInput){
         String alpha ="OABCDEFGHIJ";
         int[] numericValue = new int[userInput.length];
         for (int i = 0; i < userInput.length; i++){
