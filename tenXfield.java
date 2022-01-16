@@ -6,17 +6,18 @@ public class tenXfield {
     public static final int fieldRow = 11;
     static char rowField = 65;
     public static final String[][] field = new String[fieldColumn][fieldRow];
-
-    public  tenXfield() {
+    public static Validate validate = new Validate();
+    static String[] array;
+    public tenXfield() {
 
     }
 
     public tenXfield(String coordinates, int ship) {
-        String[] array = coordinates.toUpperCase().replaceAll("10", "x").replaceAll(" ", "").split("");
+        array = coordinates.toUpperCase().replaceAll("10", "x").replaceAll(" ", "").split("");
         if (array[1].equals("x")){array[1] = "10";}
         if (array[3].equals("x")){array[3] = "10";}
 
-        Validate validate = new Validate();
+
         if (!validate.size(pointAB(array), ship)) {
             int sizeName = Inputs.shipNames.length - ship;
             String message = String.format("Error! Wrong length of the %s! Try again: ", Inputs.shipNames[sizeName]);
@@ -25,12 +26,17 @@ public class tenXfield {
         if (!validate.positionH(pointAB(array)) && !validate.positionV(pointAB(array))){
             Inputs.function(ship,"Error! Wrong location! Try again: ");
         }
-        //add first ship
+
+    }
+    public static void addShip(){
         Ship ships = new Ship();
         ships.coordinatesOfShips(validate.tempSize, pointAB(array));
         Print print = new Print();
-        print.fPrint(ship);
+        print.fPrint(Integer.parseInt(Inputs.cells));
     }
+
+
+
 
 
     public static void assignShip(){

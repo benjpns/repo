@@ -6,6 +6,7 @@ public class Main extends tenXfield {
         Print print = new Print();
         print.fPrint();
         new Inputs();
+
     }
 
 
