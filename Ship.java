@@ -1,48 +1,103 @@
 import java.util.Arrays;
 
-public class Ship {
+public class Ship extends tenXfield {
     public static int[][] aircraft = new int[5][2];
     public static int[][] battleship = new int[4][2];
     public static int[][] submarine = new int[3][2];
     public static int[][] cruiser = new int[3][2];
     public static int[][] destroyer = new int[2][2];
+    public Validate validates;
+    public int[][]tempShip;
+
+
+
+
 
     public Ship() {
 
     }
 
+    public void supportFunction(int[] temp, int[] array){
+        tempShip = new int[temp.length][2];
+        validates = new Validate();
+        int count = 0;
+        if (validates.positionH(array)) {
+            for (int i = 0; i < temp.length; i++) {
+                for (int k = 0; k < 1; k++) {
+                    tempShip[i][k] = array[0];
+                    tempShip[i][k + 1] = temp[count++];
+                }
+            }
+        } else { // positionV
+            for (int i = 0; i < temp.length; i++) {
+                for (int k = 0; k < 1; k++) {
+                    tempShip[i][k + 1] = array[1];
+                    tempShip[i][k] = temp[count++];
+                }
+            }
+        }
+    }
+
+    public void messageFunc(){
+        Inputs.function(Integer.parseInt(Inputs.cells),"Error! You placed it too close to another one. Try again: ");
+    }
+
     public void coordinatesOfShips(int[] temp, int[] array) {
-        Validate validates = new Validate();
+        validates = new Validate();
         switch (temp.length) {
             case 5:
                 int count = 0;
                 if (validates.positionH(array)) {
                     for (int i = 0; i < temp.length; i++) {
                         for (int k = 0; k < 1; k++) {
-                            aircraft[i][k] = array[0];aircraft[i][k + 1] = temp[count++];
+                            aircraft[i][k] = array[0];
+                            aircraft[i][k + 1] = temp[count++];
                         }
                     }
                 } else { // positionV
                     for (int i = 0; i < temp.length; i++) {
                         for (int k = 0; k < 1; k++) {
-                            aircraft[i][k + 1] = array[1];aircraft[i][k] = temp[count++];
+                            aircraft[i][k + 1] = array[1];
+                            aircraft[i][k] = temp[count++];
                         }
                     }
-                    System.out.println(Arrays.deepToString(aircraft));
                 }
                 break;
             case 4:
+                supportFunction(temp, array);
+                if (validates.tooClose(tempShip)) {
+                    messageFunc();
+                } else {
+                    System.arraycopy(tempShip, 0, battleship, 0, tempShip.length);
+                }
                 break;
-               /* count = 0;
-                if (validates.positionH(array)) {
-                    for (int i = 0; i < temp.length; i++) {
-                        for (int k = 0; k < 1; k++) {
-                            battleship[i][k] = array[0];
-                            battleship[i][k + 1] = temp[count++];
-                        }
-                    }
-                    System.out.println(Arrays.deepToString(battleship));
-                }*/
+
+            case 3:
+                supportFunction(temp, array);
+                if (validates.tooClose(tempShip)) {
+                    messageFunc();
+                } else {
+                    System.arraycopy(tempShip, 0, submarine, 0, tempShip.length);
+                }
+                break;
+            case 2:
+                supportFunction(temp, array);
+                if (validates.tooClose(tempShip)) {
+                    messageFunc();
+                } else {
+                    System.arraycopy(tempShip, 0, cruiser, 0, tempShip.length);
+                }
+                break;
+            case 1:
+                supportFunction(temp, array);
+                if (validates.tooClose(tempShip)) {
+                    messageFunc();
+                } else {
+                    System.arraycopy(tempShip, 0, destroyer, 0, tempShip.length);
+                }
+                break;
+
+
 
         }
 

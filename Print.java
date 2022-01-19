@@ -1,8 +1,6 @@
 public class Print extends tenXfield {
 
     public Print() {
-
-
     }
     public void fPrint(){
         for (int i = 0; i < fieldRow; i++){
@@ -16,7 +14,7 @@ public class Print extends tenXfield {
     public void fPrint(int length){
         for (int i = 0; i < length; i++){
             for (int j = 0; j < 1; j++){
-                    field[Ship.aircraft[i][j]][Ship.aircraft[i][j+1]] = "O";
+                field[Ship.aircraft[i][j]][Ship.aircraft[i][j+1]] = "O";
             }
         }
         for (int i = 0; i < fieldRow; i++){
@@ -26,6 +24,4 @@ public class Print extends tenXfield {
             }
         }
     }
-
-
 }

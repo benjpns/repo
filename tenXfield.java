@@ -36,9 +36,6 @@ public class tenXfield {
     }
 
 
-
-
-
     public static void assignShip(){
         for (int i = 0; i < fieldRow; i++) {
             for (int k = 0; k < fieldColumn; k++) {

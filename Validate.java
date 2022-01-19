@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Validate {
     int[] tempSize;
 
@@ -51,11 +53,56 @@ public class Validate {
             }
             return true;
     }
+    public boolean tooClose(int[][] tempShip) {
+         boolean close = false;
+        if (positionH(tenXfield.pointAB(tenXfield.array))){
+            for (int[] ints : tempShip) {
+                if (close) { break; }
+                for (int k = 0; k < 1; k++) {
+                    try {
+                        boolean onTrack = Objects.equals(tenXfield.field[ints[k]][ints[k + 1]], "~");
+                        boolean down = Objects.equals(tenXfield.field[ints[k]+1][ints[k + 1]+1], "~");
+                        boolean up = Objects.equals(tenXfield.field[ints[k]-1][ints[k + 1]-1], "~");
+                        boolean right = Objects.equals(tenXfield.field[ints[k]][ints[k + 1]+1], "~");
+                        boolean left = Objects.equals(tenXfield.field[ints[k]][ints[k + 1]-1], "~");
+                        if (onTrack && down && up && right && left) {
+                            System.out.println("~");
+                        } else {
+                             close = true;
+                        }
+                    } catch (ArrayIndexOutOfBoundsException ignored){
 
+                    }
+                }
+            }
+        }
 
-    public boolean tooClose(){
+        if (positionV(tenXfield.pointAB(tenXfield.array))){
+            for (int[] ints : tempShip) {
+                if (close) { break; }
+                for (int k = 0; k < 1; k++) {
+                    try {
+                        try {
+                            boolean onTrack = Objects.equals(tenXfield.field[ints[k]][ints[k + 1]], "~");
+                            boolean down = Objects.equals(tenXfield.field[ints[k] + 1][ints[k + 1]], "~");
+                            boolean up = Objects.equals(tenXfield.field[ints[k] - 1][ints[k + 1]], "~");
+                            boolean left = Objects.equals(tenXfield.field[ints[k]][ints[k + 1]-1], "~");
+                            boolean right = Objects.equals(tenXfield.field[ints[k]][ints[k + 1]+1], "~");
+                            if (onTrack && down && up && left && right) {
+                                System.out.println("~");
+                            } else {
+                                close = true;
+                            }
+                        } catch (IllegalArgumentException ignored){
 
+                        }
 
-        return true;
+                    } catch (ArrayIndexOutOfBoundsException ignored){
+
+                    }
+                }
+            }
+        }
+        return close;
     }
 }
