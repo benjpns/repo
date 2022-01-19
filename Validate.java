@@ -82,19 +82,20 @@ public class Validate {
                 if (close) { break; }
                 for (int k = 0; k < 1; k++) {
                     try {
-                        try {
-                            boolean onTrack = Objects.equals(tenXfield.field[ints[k]][ints[k + 1]], "~");
-                            boolean down = Objects.equals(tenXfield.field[ints[k] + 1][ints[k + 1]], "~");
-                            boolean up = Objects.equals(tenXfield.field[ints[k] - 1][ints[k + 1]], "~");
-                            boolean left = Objects.equals(tenXfield.field[ints[k]][ints[k + 1]-1], "~");
-                            boolean right = Objects.equals(tenXfield.field[ints[k]][ints[k + 1]+1], "~");
-                            if (onTrack && down && up && left && right) {
-                                System.out.println("~");
-                            } else {
-                                close = true;
+                        String[] symbols = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+                        boolean onTrack = Objects.equals(tenXfield.field[ints[k]][ints[k + 1]], "~");
+                        if (!onTrack){
+                            for (String symbol : symbols) {
+                                if (Objects.equals(tenXfield.field[ints[k]][ints[k + 1]], symbol)) {
+                                    onTrack = true;
+                                    break;
+                                }
                             }
-                        } catch (IllegalArgumentException ignored){
-
+                        }
+                        if (onTrack) {
+                            System.out.println("~");
+                        } else {
+                            close = true;
                         }
 
                     } catch (ArrayIndexOutOfBoundsException ignored){
