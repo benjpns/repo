@@ -24,6 +24,7 @@ public class Inputs   {
      static void function(int shipNum, String message) {
         cells = java.lang.String.valueOf(shipNum);
         System.out.printf("%n%s", message);
-        new tenXfield(input.nextLine(), Integer.parseInt(cells));
+         new tenXfield(input.nextLine(), Integer.parseInt(cells));
+
     }
 }

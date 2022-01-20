@@ -6,12 +6,8 @@ public class Ship extends tenXfield {
     public static int[][] submarine = new int[3][2];
     public static int[][] cruiser = new int[3][2];
     public static int[][] destroyer = new int[2][2];
-    public Validate validates;
-    public int[][]tempShip;
-
-
-
-
+    Validate validates = new Validate();
+    public static int[][] tempShip;
 
     public Ship() {
 
@@ -38,12 +34,8 @@ public class Ship extends tenXfield {
         }
     }
 
-    public void messageFunc(){
-        Inputs.function(Integer.parseInt(Inputs.cells),"Error! You placed it too close to another one. Try again: ");
-    }
 
     public void coordinatesOfShips(int[] temp, int[] array) {
-        validates = new Validate();
         switch (temp.length) {
             case 5:
                 int count = 0;
@@ -65,39 +57,8 @@ public class Ship extends tenXfield {
                 break;
             case 4:
                 supportFunction(temp, array);
-                if (validates.tooClose(tempShip)) {
-                    messageFunc();
-                } else {
-                    System.arraycopy(tempShip, 0, battleship, 0, tempShip.length);
-                }
+                System.arraycopy(tempShip, 0, battleship, 0, tempShip.length);
                 break;
-
-            case 3:
-                supportFunction(temp, array);
-                if (validates.tooClose(tempShip)) {
-                    messageFunc();
-                } else {
-                    System.arraycopy(tempShip, 0, submarine, 0, tempShip.length);
-                }
-                break;
-            case 2:
-                supportFunction(temp, array);
-                if (validates.tooClose(tempShip)) {
-                    messageFunc();
-                } else {
-                    System.arraycopy(tempShip, 0, cruiser, 0, tempShip.length);
-                }
-                break;
-            case 1:
-                supportFunction(temp, array);
-                if (validates.tooClose(tempShip)) {
-                    messageFunc();
-                } else {
-                    System.arraycopy(tempShip, 0, destroyer, 0, tempShip.length);
-                }
-                break;
-
-
 
         }
 

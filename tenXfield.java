@@ -27,6 +27,12 @@ public class tenXfield {
             Inputs.function(ship,"Error! Wrong location! Try again: ");
         }
 
+        Ship shipes = new Ship();
+        shipes.supportFunction(validate.tempSize, pointAB(array));
+        if (validate.tooClose(Ship.tempShip)){
+            Inputs.function(ship,"Error! You placed it too close to another one. Try again: ");
+        }
+
     }
     public static void addShip(){
         Ship ships = new Ship();
