@@ -3,6 +3,7 @@ import java.util.Objects;
 public class Validate {
     int[] tempSize;
 
+
     public Validate(){
 
     }
@@ -60,13 +61,24 @@ public class Validate {
                 if (close) { break; }
                 for (int k = 0; k < 1; k++) {
                     try {
+                        String[] symbols = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "1", "2", "3", "4", "5", "7", "8", "9", "10"};
                         boolean onTrack = Objects.equals(tenXfield.field[ints[k]][ints[k + 1]], "~");
                         boolean down = Objects.equals(tenXfield.field[ints[k]+1][ints[k + 1]+1], "~");
                         boolean up = Objects.equals(tenXfield.field[ints[k]-1][ints[k + 1]-1], "~");
                         boolean right = Objects.equals(tenXfield.field[ints[k]][ints[k + 1]+1], "~");
                         boolean left = Objects.equals(tenXfield.field[ints[k]][ints[k + 1]-1], "~");
+
+                        if (!onTrack || !down || !up || !left || !right){
+                            for (String symbol : symbols) {
+                                if (Objects.equals(tenXfield.field[ints[k]][ints[k + 1]], symbol) || Objects.equals(tenXfield.field[ints[k]+1][ints[k + 1]+1], symbol) ||
+                                        Objects.equals(tenXfield.field[ints[k]-1][ints[k + 1]-1], symbol) || Objects.equals(tenXfield.field[ints[k]][ints[k + 1]+1], symbol) ||
+                                        Objects.equals(tenXfield.field[ints[k]][ints[k + 1]-1], symbol)) {
+                                    onTrack = true; down = true; up = true; right = true; left = true;
+                                    break;
+                                }
+                            }
+                        }
                         if (onTrack && down && up && right && left) {
-                            System.out.println("~");
                         } else {
                              close = true;
                         }
@@ -82,23 +94,25 @@ public class Validate {
                 if (close) { break; }
                 for (int k = 0; k < 1; k++) {
                     try {
-                        String[] symbols = {"A", "B", "C"};
+                        String[] symbols = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "1", "2", "3", "4", "5", "7", "8", "9", "10"};
                         boolean onTrack = Objects.equals(tenXfield.field[ints[k]][ints[k + 1]], "~");
                         boolean down = Objects.equals(tenXfield.field[ints[k] + 1][ints[k + 1]], "~");
-                        //boolean up = Objects.equals(tenXfield.field[ints[k] - 1][ints[k + 1]], "~");
-                        //boolean left = Objects.equals(tenXfield.field[ints[k]][ints[k + 1]-1], "~");
-                        //boolean right = Objects.equals(tenXfield.field[ints[k]][ints[k + 1]+1], "~");
+                        boolean up = Objects.equals(tenXfield.field[ints[k] - 1][ints[k + 1]], "~");
+                        boolean left = Objects.equals(tenXfield.field[ints[k]][ints[k + 1]-1], "~");
+                        boolean right = Objects.equals(tenXfield.field[ints[k]][ints[k + 1]+1], "~");
 
-                        if (!onTrack || !down){
+                        if (!onTrack || !down || !up || !left || !right){
                             for (String symbol : symbols) {
-                                if (Boolean.parseBoolean(symbol)) {
-                                    onTrack = true; down = true;
+                                if (Objects.equals(tenXfield.field[ints[k]][ints[k + 1]], symbol) || Objects.equals(tenXfield.field[ints[k] + 1][ints[k + 1]], symbol) ||
+                                        Objects.equals(tenXfield.field[ints[k] - 1][ints[k + 1]], symbol) || Objects.equals(tenXfield.field[ints[k]][ints[k + 1]-1], symbol) ||
+                                        Objects.equals(tenXfield.field[ints[k]][ints[k + 1]+1], symbol)) {
+                                    onTrack = true; down = true; up = true; right = true; left = true;
                                     break;
                                 }
                             }
                         }
-                        if (onTrack && down) {
-                            System.out.println("~");
+                        if (onTrack && down & up & left & right) {
+                            System.out.println();
                         } else {
                             close = true;
                         }

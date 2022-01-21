@@ -59,6 +59,20 @@ public class Ship extends tenXfield {
                 supportFunction(temp, array);
                 System.arraycopy(tempShip, 0, battleship, 0, tempShip.length);
                 break;
+            case 3:
+                supportFunction(temp, array);
+                System.arraycopy(tempShip, 0, submarine, 0, tempShip.length);
+                break;
+            case 2:
+                supportFunction(temp, array);
+                System.arraycopy(tempShip, 0, cruiser, 0, tempShip.length);
+                break;
+            case 1:
+                supportFunction(temp, array);
+                System.arraycopy(tempShip, 0, destroyer, 0, tempShip.length);
+                break;
+
+
 
         }
 
