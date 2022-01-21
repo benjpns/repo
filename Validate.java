@@ -112,7 +112,6 @@ public class Validate {
                             }
                         }
                         if (onTrack && down & up & left & right) {
-                            System.out.println();
                         } else {
                             close = true;
                         }
