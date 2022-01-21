@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Inputs   {
+public class Inputs {
     public static String[] shipNames = new String[4];
     public static String cells;
     public static Scanner input;
@@ -9,7 +9,7 @@ public class Inputs   {
         function();
     }
 
-    public  void function() {
+    public void function() {
         input = new Scanner(System.in);
         shipNames = new String[]{"Aircraft carrier", "Battleship", "Submarine", "Cruiser", "Destroyer"};
 
@@ -21,10 +21,10 @@ public class Inputs   {
         }
     }
 
-     static void function(int shipNum, String message) {
+    static void function(int shipNum, String message) {
         cells = java.lang.String.valueOf(shipNum);
         System.out.printf("%n%s", message);
-         new tenXfield(input.nextLine(), Integer.parseInt(cells));
+        new tenXfield(input.nextLine(), Integer.parseInt(cells));
 
     }
 }

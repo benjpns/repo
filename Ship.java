@@ -13,7 +13,7 @@ public class Ship extends tenXfield {
 
     }
 
-    public void supportFunction(int[] temp, int[] array){
+    public void supportFunction(int[] temp, int[] array) {
         tempShip = new int[temp.length][2];
         validates = new Validate();
         int count = 0;
@@ -71,7 +71,6 @@ public class Ship extends tenXfield {
                 supportFunction(temp, array);
                 System.arraycopy(tempShip, 0, destroyer, 0, tempShip.length);
                 break;
-
 
 
         }

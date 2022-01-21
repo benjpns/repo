@@ -8,14 +8,19 @@ public class tenXfield {
     public static final String[][] field = new String[fieldColumn][fieldRow];
     public static Validate validate = new Validate();
     static String[] array;
+
     public tenXfield() {
 
     }
 
     public tenXfield(String coordinates, int ship) {
         array = coordinates.toUpperCase().replaceAll("10", "x").replaceAll(" ", "").split("");
-        if (array[1].equals("x")){array[1] = "10";}
-        if (array[3].equals("x")){array[3] = "10";}
+        if (array[1].equals("x")) {
+            array[1] = "10";
+        }
+        if (array[3].equals("x")) {
+            array[3] = "10";
+        }
 
 
         if (!validate.size(pointAB(array), ship)) {
@@ -23,18 +28,19 @@ public class tenXfield {
             String message = String.format("Error! Wrong length of the %s! Try again: ", Inputs.shipNames[sizeName]);
             Inputs.function(ship, message);
         }
-        if (!validate.positionH(pointAB(array)) && !validate.positionV(pointAB(array))){
-            Inputs.function(ship,"Error! Wrong location! Try again: ");
+        if (!validate.positionH(pointAB(array)) && !validate.positionV(pointAB(array))) {
+            Inputs.function(ship, "Error! Wrong location! Try again: ");
         }
 
         Ship shipes = new Ship();
         shipes.supportFunction(validate.tempSize, pointAB(array));
-        if (validate.tooClose(Ship.tempShip)){
-            Inputs.function(ship,"Error! You placed it too close to another one. Try again: ");
+        if (validate.tooClose(Ship.tempShip)) {
+            Inputs.function(ship, "Error! You placed it too close to another one. Try again: ");
         }
 
     }
-    public static void addShip(){
+
+    public static void addShip() {
         Ship ships = new Ship();
         ships.coordinatesOfShips(validate.tempSize, pointAB(array));
         Print print = new Print();
@@ -42,12 +48,12 @@ public class tenXfield {
     }
 
 
-    public static void assignShip(){
+    public static void assignShip() {
         for (int i = 0; i < fieldRow; i++) {
             for (int k = 0; k < fieldColumn; k++) {
                 if (i == 0 && k == 0) field[i][k] = " ";
                 if (i == 0 && k > 0) {
-                    field[i][k] = k+"";
+                    field[i][k] = k + "";
                 }
                 if (i > 0) field[i][k] = "~";
                 if (i > 0 && k == 0) {
@@ -57,11 +63,11 @@ public class tenXfield {
         }
     }
 
-    public static int[] pointAB(String[] userInput){
-        String alpha ="OABCDEFGHIJ";
+    public static int[] pointAB(String[] userInput) {
+        String alpha = "OABCDEFGHIJ";
         int[] numericValue = new int[userInput.length];
-        for (int i = 0; i < userInput.length; i++){
-            numericValue[i] = i % 2 ==0 ? alpha.indexOf(userInput[i]): Integer.parseInt(userInput[i]);
+        for (int i = 0; i < userInput.length; i++) {
+            numericValue[i] = i % 2 == 0 ? alpha.indexOf(userInput[i]) : Integer.parseInt(userInput[i]);
         }
         return numericValue;
     }
