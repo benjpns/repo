@@ -50,7 +50,9 @@ public class Print extends tenXfield {
                 }
                 break;
         }
-
+        finalPrint();
+    }
+    public void finalPrint(){
         for (int i = 0; i < fieldRow; i++) {
             System.out.print("\n");
             for (int k = 0; k < fieldColumn; k++) {
@@ -58,4 +60,6 @@ public class Print extends tenXfield {
             }
         }
     }
+
+
 }

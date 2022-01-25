@@ -1,4 +1,4 @@
-import java.util.Arrays;
+
 
 public class tenXfield {
 
@@ -14,13 +14,23 @@ public class tenXfield {
     }
 
     public tenXfield(String coordinates, int ship) {
-        array = coordinates.toUpperCase().replaceAll("10", "x").replaceAll(" ", "").split("");
-        if (array[1].equals("x")) {
-            array[1] = "10";
-        }
-        if (array[3].equals("x")) {
-            array[3] = "10";
-        }
+
+            array = coordinates.toUpperCase().replaceAll("10", "x").replaceAll(" ", "").split("");
+
+        try {
+            if (array[1].equals("x")) {
+                array[1] = "10";
+            }
+                if (array[3].equals("x")) {
+                    array[3] = "10";
+                }
+            } catch (ArrayIndexOutOfBoundsException e){
+                String message = "Error! Incomplete ";
+                Inputs.function(ship, message);
+            }
+
+
+
 
 
         if (!validate.size(pointAB(array), ship)) {
@@ -63,11 +73,13 @@ public class tenXfield {
         }
     }
 
-    public static int[] pointAB(String[] userInput) {
-        String alpha = "OABCDEFGHIJ";
+    public static int[] pointAB(String[] userInput)   {
+
+        String alpha = "OABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
         int[] numericValue = new int[userInput.length];
         for (int i = 0; i < userInput.length; i++) {
-            numericValue[i] = i % 2 == 0 ? alpha.indexOf(userInput[i]) : Integer.parseInt(userInput[i]);
+            numericValue[i] = i % 2 == 0 ? Math.abs(alpha.indexOf(userInput[i])) : Integer.parseInt(userInput[i]);
         }
         return numericValue;
     }

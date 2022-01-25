@@ -10,7 +10,7 @@ public class Validate {
 
     // what position horizontal or vertical
     public boolean positionH(int[] pointAB) {
-        return pointAB[0] == pointAB[2];
+            return pointAB[0] == pointAB[2];
     }
 
     public boolean positionV(int[] pointAB) {
@@ -61,9 +61,8 @@ public class Validate {
         boolean close = false;
         if (positionH(tenXfield.pointAB(tenXfield.array))) {
             for (int[] ints : tempShip) {
-                if (close) {
+                if (close)
                     break;
-                }
                 for (int k = 0; k < 1; k++) {
                     try {
                         String[] symbols = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "1", "2", "3", "4", "5", "7", "8", "9", "10"};
@@ -75,8 +74,10 @@ public class Validate {
 
                         if (!onTrack || !down || !up || !left || !right) {
                             for (String symbol : symbols) {
-                                if (Objects.equals(tenXfield.field[ints[k]][ints[k + 1]], symbol) || Objects.equals(tenXfield.field[ints[k] + 1][ints[k + 1] + 1], symbol) ||
-                                        Objects.equals(tenXfield.field[ints[k] - 1][ints[k + 1] - 1], symbol) || Objects.equals(tenXfield.field[ints[k]][ints[k + 1] + 1], symbol) ||
+                                if (Objects.equals(tenXfield.field[ints[k]][ints[k + 1]], symbol)
+                                        || Objects.equals(tenXfield.field[ints[k] + 1][ints[k + 1] + 1], symbol) ||
+                                        Objects.equals(tenXfield.field[ints[k] - 1][ints[k + 1] - 1], symbol) ||
+                                        Objects.equals(tenXfield.field[ints[k]][ints[k + 1] + 1], symbol) ||
                                         Objects.equals(tenXfield.field[ints[k]][ints[k + 1] - 1], symbol)) {
                                     onTrack = true;
                                     down = true;
@@ -114,8 +115,10 @@ public class Validate {
 
                         if (!onTrack || !down || !up || !left || !right) {
                             for (String symbol : symbols) {
-                                if (Objects.equals(tenXfield.field[ints[k]][ints[k + 1]], symbol) || Objects.equals(tenXfield.field[ints[k] + 1][ints[k + 1]], symbol) ||
-                                        Objects.equals(tenXfield.field[ints[k] - 1][ints[k + 1]], symbol) || Objects.equals(tenXfield.field[ints[k]][ints[k + 1] - 1], symbol) ||
+                                if (Objects.equals(tenXfield.field[ints[k]][ints[k + 1]], symbol) ||
+                                        Objects.equals(tenXfield.field[ints[k] + 1][ints[k + 1]], symbol) ||
+                                        Objects.equals(tenXfield.field[ints[k] - 1][ints[k + 1]], symbol) ||
+                                        Objects.equals(tenXfield.field[ints[k]][ints[k + 1] - 1], symbol) ||
                                         Objects.equals(tenXfield.field[ints[k]][ints[k + 1] + 1], symbol)) {
                                     onTrack = true;
                                     down = true;
