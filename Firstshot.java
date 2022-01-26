@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Firstshot extends Print {
     //private final int[][] shots = new int[100][2];
     String[] shot;
-    private String message = "Error! You entered the wrong coordinates! Try again: ";
+    private final String message = "Error! You entered the wrong coordinates! Try again: ";
 
     public Firstshot() {
         finalPrint();
@@ -31,7 +31,7 @@ public class Firstshot extends Print {
     }
 
     //Getting firstshot userinput from PointAB function that converts userinput ex:A1 into number coordinates.
-    public int[] shotCords() { //shotCoordinates `1
+    public int[] shotCords() { //shotCoordinates
         return tenXfield.pointAB(shot);
     }
 
