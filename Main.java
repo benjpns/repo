@@ -7,9 +7,9 @@ public class Main extends tenXfield {
         Print print = new Print();
         print.fPrint();
         new Inputs();
-        //firstshot
+        //fogofwar
         System.out.println("\nThe game starts!");
-        new Firstshot();
+        new Fogofwar();
 
 
     }

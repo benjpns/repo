@@ -61,5 +61,14 @@ public class Print extends tenXfield {
         }
     }
 
+    public void emptyPrint(){
+        for (int i = 0; i < fieldRow; i++) {
+            System.out.print("\n");
+            for (int k = 0; k < fieldColumn; k++) {
+                System.out.print(emptyField[i][k] + " ");
+            }
+        }
+    }
+
 
 }
