@@ -2,10 +2,11 @@ import java.util.Locale;
 import java.util.Scanner;
 
 enum Status {
-    MISSED, MISSILE, REPEAT;
+    MISSED, MISSILE, REPEAT
 }
 public class Fogofwar extends Print {
     public int destroyedCount = 0;
+    private final int  TOTALCELLS = 17;
     String[] shot;
     private final String message = "Error! You entered the wrong coordinates! Try again: ";
 
@@ -13,21 +14,21 @@ public class Fogofwar extends Print {
         tenXfield.emptyField();emptyPrint();
         System.out.println("\nTake a shot!");
         shotInput();
-        while (destroyedCount != 17) {
+        while (destroyedCount != TOTALCELLS) {
             addShot();
         }
     }
 
     public void addShot() {
         Status status;
-        String coords = tenXfield.field[shotCords()[0]][shotCords()[1]];
+        String TenXfield = tenXfield.field[shotCords()[0]][shotCords()[1]];
         try {
-            if (coords.equals("O")) {
+            if (TenXfield.equals("O")) {
                 status = Status.MISSILE;
             } else {
                 status = Status.MISSED;
             }
-            if (coords.equals("X")) {
+            if (TenXfield.equals("X")) {
                 status = Status.REPEAT;
             }
             switch (status) {
@@ -36,7 +37,7 @@ public class Fogofwar extends Print {
                     tenXfield.emptyField[shotCords()[0]][shotCords()[1]] = "X";
                     emptyPrint();
                     destroyedCount++;
-                    if (destroyedCount >= 17) {
+                    if (destroyedCount >= TOTALCELLS) {
                         GameEnds();
                         break;
                     }
@@ -65,11 +66,6 @@ public class Fogofwar extends Print {
         }
     }
 
-    //PointAB function that converts userinput ex:A1 into number coordinates.
-    public int[] shotCords() { //shotCoordinates
-        return tenXfield.pointAB(shot);
-    }
-
     public void shotInput() {
         Scanner scan = new Scanner(System.in);
         shot = scan.next().toUpperCase(Locale.ROOT).replaceAll("10", "x").split("");
@@ -86,6 +82,11 @@ public class Fogofwar extends Print {
             System.out.println(message);
             Error();
         }
+    }
+
+    //PointAB function that converts userinput ex:A1 into number coordinates.
+    public int[] shotCords() { //shotCoordinates
+        return tenXfield.pointAB(shot);
     }
 
     public void Error() {

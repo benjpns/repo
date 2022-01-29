@@ -5,18 +5,17 @@ public class tenXfield {
     public static final int fieldColumn = 11;
     public static final int fieldRow = 11;
     public static  char rowField = 65;
-    public static char empyField = 65;
+    public static char forEmptyField = 65;
     public static final String[][] field = new String[fieldColumn][fieldRow];
     public static final String[][] emptyField = new String[fieldColumn][fieldRow];
     public static Validate validate = new Validate();
     static String[] array;
 
     public tenXfield() {
-
     }
 
     public tenXfield(String coordinates, int ship) {
-
+            //turing usertyped coordinates to array. Regex to avoid reading 10 as 1,0.
             array = coordinates.toUpperCase().replaceAll("10", "x").replaceAll(" ", "").split("");
 
         try {
@@ -30,10 +29,6 @@ public class tenXfield {
                 String message = "Error! Incomplete ";
                 Inputs.function(ship, message);
             }
-
-
-
-
 
         if (!validate.size(pointAB(array), ship)) {
             int sizeName = Inputs.shipNames.length - ship;
@@ -59,7 +54,7 @@ public class tenXfield {
         print.fPrint(Integer.parseInt(Inputs.cells));
     }
 
-    // need to review array as paramenter.
+
     public static void assignShip() {
         for (int i = 0; i < fieldRow; i++) {
             for (int k = 0; k < fieldColumn; k++) {
@@ -84,17 +79,16 @@ public class tenXfield {
                 }
                 if (i > 0) emptyField[i][k] = "~";
                 if (i > 0 && k == 0) {
-                    emptyField[i][k] = String.valueOf(empyField++);
+                    emptyField[i][k] = String.valueOf(forEmptyField++);
                 }
             }
         }
     }
 
     public static int[] pointAB(String[] userInput) {
-
         String alpha = "OABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
         int[] numericValue = new int[userInput.length];
+
         try {
             for (int i = 0; i < userInput.length; i++) {
                 numericValue[i] = i % 2 == 0 ? Math.abs(alpha.indexOf(userInput[i])) : Integer.parseInt(userInput[i]);
@@ -102,8 +96,6 @@ public class tenXfield {
         } catch (NumberFormatException ignored){
 
         }
-
         return numericValue;
     }
-
 }
