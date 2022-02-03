@@ -1,7 +1,5 @@
 public class Print extends tenXfield {
 
-    public Print() {
-    }
 
     public void fPrint() {
         for (int i = 0; i < fieldRow; i++) {

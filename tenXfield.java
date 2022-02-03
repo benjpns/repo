@@ -12,22 +12,17 @@ public class tenXfield {
     static String[] array;
 
     public tenXfield() {
+
     }
 
     public tenXfield(String coordinates, int ship) {
-            //turing usertyped coordinates to array. Regex to avoid reading 10 as 1,0.
+            //turning usertyped coordinates to array. Regex to avoid reading 10 as 1,0.
             array = coordinates.toUpperCase().replaceAll("10", "x").replaceAll(" ", "").split("");
 
         try {
-            if (array[1].equals("x")) {
-                array[1] = "10";
-            }
-                if (array[3].equals("x")) {
-                    array[3] = "10";
-                }
-            } catch (ArrayIndexOutOfBoundsException e){
-                String message = "Error! Incomplete ";
-                Inputs.function(ship, message);
+            replaceXbackWithTen();
+        } catch (ArrayIndexOutOfBoundsException e){
+                Inputs.function(ship, "Error! Incomplete ");
             }
 
         if (!validate.size(pointAB(array), ship)) {
@@ -45,6 +40,15 @@ public class tenXfield {
             Inputs.function(ship, "Error! You placed it too close to another one. Try again: ");
         }
 
+    }
+
+    private void replaceXbackWithTen() {
+        if (array[1].equals("x")) {
+            array[1] = "10";
+        }
+        if (array[3].equals("x")) {
+            array[3] = "10";
+        }
     }
 
     public static void addShip() {
