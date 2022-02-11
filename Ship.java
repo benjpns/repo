@@ -1,4 +1,4 @@
-import java.util.Arrays;
+
 
 public class Ship extends tenXfield {
     public static int[][] aircraft = new int[5][2];
@@ -8,10 +8,6 @@ public class Ship extends tenXfield {
     public static int[][] destroyer = new int[2][2];
     Validate validates = new Validate();
     public static int[][] tempShip;
-
-    public Ship() {
-
-    }
 
     public void supportFunction(int[] temp, int[] array) {
         tempShip = new int[temp.length][2];
