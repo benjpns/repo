@@ -20,7 +20,12 @@ public class Validate {
     public boolean size(int[] pointAB, int ship) {
         tempSize = new int[ship];
         int[] ab = new int[4];
-        System.arraycopy(pointAB, 0, ab, 0, pointAB.length);
+        try {
+            System.arraycopy(pointAB, 0, ab, 0, pointAB.length);
+        } catch (ArrayIndexOutOfBoundsException e){
+            Inputs.function(ship, "Something went wrong. Try again: ");
+        }
+
         int a = pointAB[1];
         if (positionH(pointAB)) { //horizontal check
             if (pointAB[1] < pointAB[3]) {
